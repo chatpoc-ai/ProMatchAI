@@ -1,14 +1,15 @@
 
 import React from 'react';
-import { LayoutDashboard, TrendingUp, Activity, MessageSquare, Settings, FileVideo } from 'lucide-react';
+import { LayoutDashboard, TrendingUp, Activity, MessageSquare, Settings, FileVideo, LogOut } from 'lucide-react';
 
 interface LayoutProps {
     children: React.ReactNode;
     activeTab: string;
     onTabChange: (tab: string) => void;
+    onLogout?: () => void;
 }
 
-const Layout: React.FC<LayoutProps> = ({ children, activeTab, onTabChange }) => {
+const Layout: React.FC<LayoutProps> = ({ children, activeTab, onTabChange, onLogout }) => {
     const navItems = [
         { id: 'dashboard', label: 'Overview', icon: LayoutDashboard },
         { id: 'assessment', label: 'Baseline Assessment', icon: Activity },
@@ -51,7 +52,7 @@ const Layout: React.FC<LayoutProps> = ({ children, activeTab, onTabChange }) => 
                     })}
                 </nav>
 
-                <div className="p-4 border-t border-slate-800">
+                <div className="p-4 border-t border-slate-800 space-y-2">
                     <button 
                         onClick={() => onTabChange('settings')}
                         className={`flex items-center gap-3 px-4 py-3 w-full text-sm font-medium rounded-xl transition-all duration-200 ${
@@ -63,6 +64,15 @@ const Layout: React.FC<LayoutProps> = ({ children, activeTab, onTabChange }) => 
                         <Settings size={18} />
                         Settings
                     </button>
+                    {onLogout && (
+                        <button 
+                            onClick={onLogout}
+                            className="flex items-center gap-3 px-4 py-3 w-full text-sm font-medium rounded-xl text-rose-500 hover:bg-rose-500/10 hover:text-rose-400 transition-all duration-200"
+                        >
+                            <LogOut size={18} />
+                            Sign Out
+                        </button>
+                    )}
                 </div>
             </aside>
 
