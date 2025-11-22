@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { LayoutDashboard, TrendingUp, Activity, MessageSquare, Settings, FileVideo } from 'lucide-react';
 
@@ -51,7 +52,14 @@ const Layout: React.FC<LayoutProps> = ({ children, activeTab, onTabChange }) => 
                 </nav>
 
                 <div className="p-4 border-t border-slate-800">
-                    <button className="flex items-center gap-3 px-4 py-3 w-full text-sm text-slate-500 hover:text-slate-300 transition-colors">
+                    <button 
+                        onClick={() => onTabChange('settings')}
+                        className={`flex items-center gap-3 px-4 py-3 w-full text-sm font-medium rounded-xl transition-all duration-200 ${
+                            activeTab === 'settings'
+                                ? 'bg-indigo-600/10 text-indigo-400 border border-indigo-600/20'
+                                : 'text-slate-500 hover:text-slate-300 hover:bg-slate-800'
+                        }`}
+                    >
                         <Settings size={18} />
                         Settings
                     </button>
