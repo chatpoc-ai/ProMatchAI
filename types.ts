@@ -1,3 +1,4 @@
+
 export enum SportType {
     BASKETBALL = 'Basketball',
     TENNIS = 'Tennis',
@@ -35,6 +36,8 @@ export interface TrainingDrill {
     completed: boolean;
     benchmarkPro: string;
     userBest: string;
+    description?: string;
+    instructions?: string[];
 }
 
 export interface ChatMessage {
